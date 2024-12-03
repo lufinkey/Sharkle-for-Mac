@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -239,12 +239,12 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SmolIcon" id="2MC-jK-Q8H"/>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9W8-zg-hba">
-                                                <rect key="frame" x="20" y="10" width="240" height="60"/>
+                                                <rect key="frame" x="20" y="11" width="241" height="59"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBt-8D-Uiv">
-                                                        <rect key="frame" x="0.0" y="17" width="147" height="43"/>
+                                                        <rect key="frame" x="0.0" y="16" width="147" height="43"/>
                                                         <subviews>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rpz-Ge-yZy">
+                                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rpz-Ge-yZy">
                                                                 <rect key="frame" x="-2" y="1" width="129" height="42"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="42" id="C57-vZ-AdL"/>
@@ -255,7 +255,7 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cuZ-j5-zuH">
+                                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cuZ-j5-zuH">
                                                                 <rect key="frame" x="125" y="0.0" width="24" height="19"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="vX" id="q3l-m9-WTY">
                                                                     <font key="font" metaFont="systemSemibold" size="16"/>
@@ -273,8 +273,8 @@
                                                             <real value="3.4028234663852886e+38"/>
                                                         </customSpacing>
                                                     </stackView>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j8H-Tb-MeQ">
-                                                        <rect key="frame" x="-2" y="0.0" width="244" height="17"/>
+                                                    <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j8H-Tb-MeQ">
+                                                        <rect key="frame" x="-2" y="0.0" width="245" height="16"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="A project by Peter Wunder, 2017 – 2018" id="q1H-rd-AgY">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -309,8 +309,8 @@
                                     <constraint firstAttribute="bottom" secondItem="vx1-eg-sQD" secondAttribute="bottom" id="zrH-LZ-Ukt"/>
                                 </constraints>
                             </customView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6jn-2v-FD2" customClass="HyperlinkTextField">
-                                <rect key="frame" x="18" y="94" width="294" height="64"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6jn-2v-FD2" customClass="HyperlinkTextField">
+                                <rect key="frame" x="18" y="98" width="294" height="60"/>
                                 <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="YTh-fe-VNc">
                                     <font key="font" metaFont="cellTitle"/>
                                     <string key="title">Inspired by Night in the Woods's Sharkle.
@@ -319,8 +319,8 @@ For a relatively spoiler-free explanation, watch this part of Jesse Cox's playth
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jba-Yo-syp">
-                                <rect key="frame" x="46" y="42" width="114" height="16"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jba-Yo-syp">
+                                <rect key="frame" x="46" y="48" width="114" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="GNf-DV-Ujz"/>
                                 </constraints>
@@ -330,8 +330,8 @@ For a relatively spoiler-free explanation, watch this part of Jesse Cox's playth
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7m4-1N-ANF">
-                                <rect key="frame" x="46" y="18" width="114" height="16"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7m4-1N-ANF">
+                                <rect key="frame" x="46" y="25" width="114" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="6IR-kH-Hph"/>
                                 </constraints>
@@ -341,8 +341,8 @@ For a relatively spoiler-free explanation, watch this part of Jesse Cox's playth
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3kR-oV-BAB" customClass="HyperlinkTextField">
-                                <rect key="frame" x="170" y="66" width="114" height="16"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3kR-oV-BAB" customClass="HyperlinkTextField">
+                                <rect key="frame" x="170" y="71" width="114" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="bbY-qV-YE7"/>
                                 </constraints>
@@ -352,8 +352,8 @@ For a relatively spoiler-free explanation, watch this part of Jesse Cox's playth
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="26t-4I-7do" customClass="HyperlinkTextField">
-                                <rect key="frame" x="170" y="42" width="114" height="16"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="26t-4I-7do" customClass="HyperlinkTextField">
+                                <rect key="frame" x="170" y="48" width="114" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="B07-Vf-mnN"/>
                                 </constraints>
@@ -363,8 +363,8 @@ For a relatively spoiler-free explanation, watch this part of Jesse Cox's playth
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RHp-92-II5" customClass="HyperlinkTextField">
-                                <rect key="frame" x="170" y="18" width="114" height="16"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RHp-92-II5" customClass="HyperlinkTextField">
+                                <rect key="frame" x="170" y="25" width="114" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="9xW-3l-A6I"/>
                                 </constraints>
@@ -374,8 +374,8 @@ For a relatively spoiler-free explanation, watch this part of Jesse Cox's playth
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VRv-gH-NJ0">
-                                <rect key="frame" x="46" y="66" width="114" height="16"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VRv-gH-NJ0">
+                                <rect key="frame" x="46" y="71" width="114" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="Oew-qO-1Y6"/>
                                 </constraints>
