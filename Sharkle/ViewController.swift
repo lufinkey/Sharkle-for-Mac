@@ -82,5 +82,35 @@ class ViewController: NSViewController {
             self.animationIsPlaying = false
         })
     }
+    
+    override func rightMouseDown(with event: NSEvent) {
+        super.rightMouseDown(with: event)
+        
+        let menu = NSMenu(title:"Context Menu")
+        menu.addItem(contextMenuItem(
+            title: "About",
+            action: #selector(didSelectContextItemAbout(_:))))
+        menu.addItem(contextMenuItem(
+            title: "Close",
+            action: #selector(didSelectContextItemClose(_:))))
+        NSMenu.popUpContextMenu(menu, with: event, for: self.view)
+    }
+    
+    private func contextMenuItem(title: String, action: Selector) -> NSMenuItem {
+        let menuItem = NSMenuItem(
+            title: title,
+            action: action,
+            keyEquivalent: "")
+        menuItem.target = self
+        return menuItem
+    }
+    
+    @objc func didSelectContextItemAbout(_ sender: Any) {
+        AboutViewController.showInNewWindow()
+    }
+    
+    @objc func didSelectContextItemClose(_ sender: Any) {
+        NSApplication.shared.terminate(nil)
+    }
 }
 

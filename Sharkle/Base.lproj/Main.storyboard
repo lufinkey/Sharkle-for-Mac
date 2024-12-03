@@ -220,7 +220,7 @@
         <!--About View Controller-->
         <scene sceneID="CCN-1D-17n">
             <objects>
-                <viewController id="07T-8k-iQn" customClass="AboutViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="About" id="07T-8k-iQn" customClass="AboutViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="K5Y-68-kxm">
                         <rect key="frame" x="0.0" y="0.0" width="330" height="246"/>
                         <autoresizingMask key="autoresizingMask"/>
