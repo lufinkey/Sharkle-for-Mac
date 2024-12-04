@@ -30,7 +30,6 @@ class AppSettings {
         let app = NSApplication.shared
         if app.activationPolicy() != newPolicy {
             let frontWindow = app.keyWindow
-            print("Setting policy to \(newPolicy)")
             app.setActivationPolicy(newPolicy)
             if refocusFrontWindow {
                 if !shown, let frontWindow = frontWindow {
