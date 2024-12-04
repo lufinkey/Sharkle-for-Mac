@@ -23,6 +23,8 @@
 		56BF4A831EA9B4D100021BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56BF4A821EA9B4D100021BC2 /* Assets.xcassets */; };
 		56CD709A1EA98A12004AFA12 /* SharkleWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CD70991EA98A12004AFA12 /* SharkleWindowController.swift */; };
 		56CD709C1EA9965E004AFA12 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CD709B1EA9965E004AFA12 /* Extensions.swift */; };
+		F7EE7F452D00BA100025248C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EE7F442D00BA090025248C /* SettingsViewController.swift */; };
+		F7EE7F472D00C2150025248C /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EE7F462D00C2110025248C /* AppSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		56BF4A821EA9B4D100021BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56CD70991EA98A12004AFA12 /* SharkleWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharkleWindowController.swift; sourceTree = "<group>"; };
 		56CD709B1EA9965E004AFA12 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F7EE7F442D00BA090025248C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F7EE7F462D00C2110025248C /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +96,12 @@
 				565023C51EAD1C1700BB27CE /* HyperlinkTextField */,
 				568C73871EA9F27600CBA2D3 /* Sharkle.entitlements */,
 				568755531EA82781004C351F /* AppDelegate.swift */,
+				F7EE7F462D00C2110025248C /* AppSettings.swift */,
 				56CD709B1EA9965E004AFA12 /* Extensions.swift */,
 				568755551EA82781004C351F /* ViewController.swift */,
 				56CD70991EA98A12004AFA12 /* SharkleWindowController.swift */,
 				568C73831EA9E12300CBA2D3 /* AboutViewController.swift */,
+				F7EE7F442D00BA090025248C /* SettingsViewController.swift */,
 				56BF4A821EA9B4D100021BC2 /* Assets.xcassets */,
 				56CD70AD1EA99D9B004AFA12 /* Sounds */,
 				568755591EA82782004C351F /* Main.storyboard */,
@@ -169,6 +175,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -209,9 +216,11 @@
 			files = (
 				565023C91EAD1C3600BB27CE /* HyperlinkTextField.m in Sources */,
 				56CD709A1EA98A12004AFA12 /* SharkleWindowController.swift in Sources */,
+				F7EE7F452D00BA100025248C /* SettingsViewController.swift in Sources */,
 				568755561EA82781004C351F /* ViewController.swift in Sources */,
 				568755541EA82781004C351F /* AppDelegate.swift in Sources */,
 				568C73841EA9E12300CBA2D3 /* AboutViewController.swift in Sources */,
+				F7EE7F472D00C2150025248C /* AppSettings.swift in Sources */,
 				56CD709C1EA9965E004AFA12 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

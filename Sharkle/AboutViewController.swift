@@ -63,10 +63,11 @@ class AboutViewController: NSViewController {
         return storyboard.instantiateController(withIdentifier: "About") as! AboutViewController
     }
     
-    
     public static func showInNewWindow() {
         let window = NSWindow(contentViewController: instantiate())
+        window.title = "About Sharkle"
         window.makeKeyAndOrderFront(nil)
+        window.orderFrontRegardless()
     }
     
 }

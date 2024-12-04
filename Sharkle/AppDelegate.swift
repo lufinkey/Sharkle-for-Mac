@@ -12,6 +12,10 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	weak var sharkleController: SharkleWindowController!
+    
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        AppSettings.initialize()
+    }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true

@@ -91,6 +91,9 @@ class ViewController: NSViewController {
             title: "About",
             action: #selector(didSelectContextItemAbout(_:))))
         menu.addItem(contextMenuItem(
+            title: "Settings",
+            action: #selector(didSelectContextItemSettings(_:))))
+        menu.addItem(contextMenuItem(
             title: "Close",
             action: #selector(didSelectContextItemClose(_:))))
         NSMenu.popUpContextMenu(menu, with: event, for: self.view)
@@ -105,12 +108,29 @@ class ViewController: NSViewController {
         return menuItem
     }
     
+    private func focusWindowIfExists<T: NSViewController>(_ type: T.Type) -> Bool {
+        guard let window = NSApplication.shared.windows.first(where: { cmpWin in
+            return cmpWin.contentViewController is T
+        }) else {
+            return false
+        }
+        window.orderFrontRegardless()
+        return true
+    }
+    
     @objc func didSelectContextItemAbout(_ sender: Any) {
-        AboutViewController.showInNewWindow()
+        if !focusWindowIfExists(AboutViewController.self) {
+            AboutViewController.showInNewWindow()
+        }
+    }
+    
+    @objc func didSelectContextItemSettings(_ sender: Any) {
+        if !focusWindowIfExists(SettingsViewController.self) {
+            SettingsViewController.showInNewWindow()
+        }
     }
     
     @objc func didSelectContextItemClose(_ sender: Any) {
         NSApplication.shared.terminate(nil)
     }
 }
-
