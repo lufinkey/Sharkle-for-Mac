@@ -11,8 +11,8 @@ class AppSettings {
     @available(*, unavailable) private init() {}
     
     public class PreferenceItem<T> {
-        public typealias ValueGetter = () -> T
-        public typealias ValueSetter = (_ value: T, _ initializing: Bool) -> Bool
+        public typealias ValueGetter = (_ prefItem: PreferenceItem<T>) -> T
+        public typealias ValueSetter = (_ value: T, _ prefItem: PreferenceItem<T>, _ initializing: Bool) -> Bool
         public typealias ChangeCallback = (_ value: T) -> Void
         
         private struct Observer {
@@ -35,6 +35,17 @@ class AppSettings {
             self.setValue = setValue
         }
         
+        public convenience init(prefKey: String, defaultValue: T) {
+            self.init(
+                prefKey: "animateWhenOccluded",
+                getValue: { (prefItem) in
+                    return prefItem.prefValue ?? defaultValue
+                },
+                setValue: { (value, prefItem, initializing) in
+                    return true
+                })
+        }
+        
         public var prefValue: T? {
             get { UserDefaults.standard.object(forKey: self.prefKey) as? T }
             set { UserDefaults.standard.set(newValue, forKey: self.prefKey) }
@@ -42,7 +53,7 @@ class AppSettings {
         
         public func initialize() {
             if let val = self.prefValue {
-                let result = self.setValue(val, true)
+                let result = self.setValue(val, self, true)
                 if !result {
                     NSLog("Failed to initialize preference \"\(self.prefKey)\"")
                 }
@@ -51,10 +62,10 @@ class AppSettings {
         
         @discardableResult
         public func set(_ value: T) -> Bool {
-            let result = self.setValue(value, false)
+            let result = self.setValue(value, self, false)
             if result {
                 self.prefValue = value
-                var observersList = self.observers
+                let observersList = self.observers
                 for observer in observersList {
                     observer.callback(value)
                 }
@@ -63,11 +74,11 @@ class AppSettings {
         }
         
         public func get() -> T {
-            return self.getValue()
+            return self.getValue(self)
         }
         
         public func observe(_ key: AnyHashable, _ callback: @escaping ChangeCallback) {
-            if let index = observers.firstIndex(where: { $0.key == key }) {
+            if let _ = observers.firstIndex(where: { $0.key == key }) {
                 // already observing
                 NSLog("\(key) is already observing pref key \"\(self.prefKey)\"")
                 return
@@ -86,9 +97,11 @@ class AppSettings {
     
     public static let isShownInDock = PreferenceItem<Bool>(
         prefKey: "isShownInDock",
-        getValue: { (NSApplication.shared.activationPolicy() == .regular) },
-        setValue: { (_ shown: Bool, _ initializing: Bool) in
-            let newPolicy: NSApplication.ActivationPolicy = shown ? .regular : .accessory
+        getValue: { prefItem in
+            return (NSApplication.shared.activationPolicy() == .regular)
+        },
+        setValue: { (value, prefItem, initializing) in
+            let newPolicy: NSApplication.ActivationPolicy = value ? .regular : .accessory
             let app = NSApplication.shared
             if app.activationPolicy() == newPolicy {
                 return true
@@ -97,7 +110,7 @@ class AppSettings {
             let wasActive = app.isActive
             app.setActivationPolicy(newPolicy)
             // refocus the key window if disabling the setting
-            if !initializing && !shown && wasActive, let frontWindow = frontWindow  {
+            if !initializing && !value && wasActive, let frontWindow = frontWindow  {
                 app.activate(ignoringOtherApps: true)
                 frontWindow.makeKeyAndOrderFront(nil)
             }
