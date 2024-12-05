@@ -20,13 +20,13 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
-                                                <segue destination="71C-e3-hS3" kind="show" id="3ct-02-Jeg"/>
+                                                <segue destination="71C-e3-hS3" kind="show" identifier="AboutSegue" id="3ct-02-Jeg"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                             <connections>
-                                                <segue destination="O2U-Oi-CZ8" kind="show" id="k2E-bo-A1H"/>
+                                                <segue destination="O2U-Oi-CZ8" kind="show" identifier="PreferencesSegue" id="7oD-ur-y4j"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
@@ -123,7 +123,12 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Sharkle" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Sharkle" customModuleProvider="target">
+                    <connections>
+                        <outlet property="aboutMenuItem" destination="5kV-Vb-QxS" id="ChB-Xk-REn"/>
+                        <outlet property="settingsMenuItem" destination="BOF-NM-1cW" id="DM9-VC-RWq"/>
+                    </connections>
+                </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-226" y="154"/>
@@ -224,7 +229,7 @@
         <!--Window Controller-->
         <scene sceneID="NCE-di-N4n">
             <objects>
-                <windowController id="O2U-Oi-CZ8" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="O2U-Oi-CZ8" sceneMemberID="viewController">
                     <window key="window" title="Sharkle Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="z8C-BM-Kvu">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -249,7 +254,7 @@
         <!--Settings View Controller-->
         <scene sceneID="4fR-z8-uhq">
             <objects>
-                <viewController storyboardIdentifier="Settings" id="aKZ-51-URM" customClass="SettingsViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aKZ-51-URM" customClass="SettingsViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="SFT-VY-RXz">
                         <rect key="frame" x="0.0" y="0.0" width="212" height="135"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -285,7 +290,7 @@
         <!--About View Controller-->
         <scene sceneID="CCN-1D-17n">
             <objects>
-                <viewController storyboardIdentifier="About" id="07T-8k-iQn" customClass="AboutViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="07T-8k-iQn" customClass="AboutViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="K5Y-68-kxm">
                         <rect key="frame" x="0.0" y="0.0" width="330" height="246"/>
                         <autoresizingMask key="autoresizingMask"/>

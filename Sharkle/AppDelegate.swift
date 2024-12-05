@@ -10,8 +10,14 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    public static var shared: AppDelegate {
+        get { NSApp.delegate as! AppDelegate }
+    }
 	
 	weak var sharkleController: SharkleWindowController!
+    
+    @IBOutlet weak var aboutMenuItem: NSMenuItem!
+    @IBOutlet weak var settingsMenuItem: NSMenuItem!
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         AppSettings.initialize()
@@ -27,5 +33,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 	}
 	
+    
+    
+    private func clickMenuItemToOpenWindow(_ menuItem: NSMenuItem) {
+        NSApp.sendAction(menuItem.action!, to: menuItem.target, from: aboutMenuItem)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    public func showAboutWindow() {
+        clickMenuItemToOpenWindow(aboutMenuItem)
+    }
+    
+    public func showSettingsWindow() {
+        clickMenuItemToOpenWindow(settingsMenuItem)
+    }
 }
-

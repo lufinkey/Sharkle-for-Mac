@@ -89,13 +89,13 @@ class ViewController: NSViewController {
         let menu = NSMenu(title:"Context Menu")
         menu.addItem(contextMenuItem(
             title: "About",
-            action: #selector(didSelectContextItemAbout(_:))))
+            action: #selector(didSelectAbout(_:))))
         menu.addItem(contextMenuItem(
             title: "Settings",
-            action: #selector(didSelectContextItemSettings(_:))))
+            action: #selector(didSelectSettings(_:))))
         menu.addItem(contextMenuItem(
             title: "Close",
-            action: #selector(didSelectContextItemClose(_:))))
+            action: #selector(didSelectClose(_:))))
         NSMenu.popUpContextMenu(menu, with: event, for: self.view)
     }
     
@@ -108,29 +108,15 @@ class ViewController: NSViewController {
         return menuItem
     }
     
-    private func focusWindowIfExists<T: NSViewController>(_ type: T.Type) -> Bool {
-        guard let window = NSApplication.shared.windows.first(where: { cmpWin in
-            return cmpWin.contentViewController is T
-        }) else {
-            return false
-        }
-        window.orderFrontRegardless()
-        return true
+    @objc func didSelectAbout(_ sender: Any?) {
+        AppDelegate.shared.showAboutWindow()
     }
     
-    @objc func didSelectContextItemAbout(_ sender: Any) {
-        if !focusWindowIfExists(AboutViewController.self) {
-            AboutViewController.showInNewWindow()
-        }
+    @objc func didSelectSettings(_ sender: Any?) {
+        AppDelegate.shared.showSettingsWindow()
     }
     
-    @objc func didSelectContextItemSettings(_ sender: Any) {
-        if !focusWindowIfExists(SettingsViewController.self) {
-            SettingsViewController.showInNewWindow()
-        }
-    }
-    
-    @objc func didSelectContextItemClose(_ sender: Any) {
+    @objc func didSelectClose(_ sender: Any) {
         NSApplication.shared.terminate(nil)
     }
 }

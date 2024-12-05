@@ -57,17 +57,4 @@ class AboutViewController: NSViewController {
         twitterLabel.attributedStringValue = twitterAttrString
     }
     
-    
-    public static func instantiate() -> AboutViewController {
-        let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        return storyboard.instantiateController(withIdentifier: "About") as! AboutViewController
-    }
-    
-    public static func showInNewWindow() {
-        let window = NSWindow(contentViewController: instantiate())
-        window.title = "About Sharkle"
-        window.makeKeyAndOrderFront(nil)
-        window.orderFrontRegardless()
-    }
-    
 }
