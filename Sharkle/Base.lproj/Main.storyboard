@@ -231,12 +231,12 @@
             <objects>
                 <windowController showSeguePresentationStyle="single" id="O2U-Oi-CZ8" sceneMemberID="viewController">
                     <window key="window" title="Sharkle Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="z8C-BM-Kvu">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="255" y="323" width="330" height="270"/>
+                        <rect key="contentRect" x="255" y="346" width="330" height="204"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1728" height="1079"/>
                         <view key="contentView" id="ICJ-ok-zlD">
-                            <rect key="frame" x="0.0" y="0.0" width="330" height="270"/>
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="204"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                         <connections>
@@ -244,48 +244,73 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="aKZ-51-URM" kind="relationship" relationship="window.shadowedContentViewController" id="jRM-No-e9m"/>
+                        <segue destination="YVc-T6-kF2" kind="relationship" relationship="window.shadowedContentViewController" id="j6Q-Km-gL3"/>
                     </connections>
                 </windowController>
                 <customObject id="Gbm-Oh-xnC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-534" y="736"/>
+            <point key="canvasLocation" x="-522" y="755"/>
         </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="4fR-z8-uhq">
+        <!--Tab View Controller-->
+        <scene sceneID="vh4-si-Mj5">
             <objects>
-                <viewController id="aKZ-51-URM" customClass="SettingsViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="SFT-VY-RXz">
-                        <rect key="frame" x="0.0" y="0.0" width="212" height="135"/>
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="YVc-T6-kF2" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" image="NSPreferencesGeneral" id="6Ze-oO-wGh"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="xoc-sf-kVk">
+                        <rect key="frame" x="107" y="0.0" width="343" height="246"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <outlet property="delegate" destination="YVc-T6-kF2" id="UUP-lj-wiq"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="xoc-sf-kVk" id="Wwn-PM-WQc"/>
+                        <segue destination="g8b-Kv-LUV" kind="relationship" relationship="tabItems" id="KJD-0O-WRq"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="AOP-Nx-2D4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-521.5" y="1176"/>
+        </scene>
+        <!--General-->
+        <scene sceneID="8st-6x-dzk">
+            <objects>
+                <viewController title="General" id="g8b-Kv-LUV" customClass="GeneralSettingsViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="f1W-Vc-nUk">
+                        <rect key="frame" x="0.0" y="0.0" width="287" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LiM-BJ-JqZ">
-                                <rect key="frame" x="18" y="98" width="174" height="18"/>
-                                <buttonCell key="cell" type="check" title="Show Dock Icon" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OZb-4D-4O3">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SuS-2b-QZ2">
+                                <rect key="frame" x="78" y="19" width="189" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show Dock Icon" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xIT-jl-ksf">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="Cpa-cF-1OQ"/>
+                                    <constraint firstAttribute="height" constant="16" id="IWe-o1-vay"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="didToggleShowInDock:" target="aKZ-51-URM" id="0HZ-SG-pq2"/>
+                                    <action selector="didToggleShowInDock:" target="g8b-Kv-LUV" id="8CI-tZ-h6U"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="LiM-BJ-JqZ" firstAttribute="leading" secondItem="SFT-VY-RXz" secondAttribute="leading" constant="20" symbolic="YES" id="8UY-1P-kOa"/>
-                            <constraint firstItem="LiM-BJ-JqZ" firstAttribute="top" secondItem="SFT-VY-RXz" secondAttribute="top" constant="20" symbolic="YES" id="IAY-q2-B0h"/>
-                            <constraint firstAttribute="trailing" secondItem="LiM-BJ-JqZ" secondAttribute="trailing" constant="20" symbolic="YES" id="ZLS-oJ-iVV"/>
+                            <constraint firstItem="SuS-2b-QZ2" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="centerX" constant="-64" id="Mbx-aR-RB3"/>
+                            <constraint firstAttribute="bottom" secondItem="SuS-2b-QZ2" secondAttribute="bottom" constant="20" symbolic="YES" id="PTe-cS-FtW"/>
+                            <constraint firstAttribute="trailing" secondItem="SuS-2b-QZ2" secondAttribute="trailing" constant="20" symbolic="YES" id="QG2-du-WFk"/>
+                            <constraint firstItem="SuS-2b-QZ2" firstAttribute="top" secondItem="f1W-Vc-nUk" secondAttribute="top" constant="20" symbolic="YES" id="xC8-m1-ELb"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="showInDockToggle" destination="LiM-BJ-JqZ" id="vxM-S7-uDR"/>
+                        <outlet property="showInDockToggle" destination="SuS-2b-QZ2" id="Loi-X3-EeR"/>
                     </connections>
                 </viewController>
-                <customObject id="StX-n1-kZg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="cSF-O8-uUh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-534" y="1066"/>
+            <point key="canvasLocation" x="-522" y="1499"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="CCN-1D-17n">
@@ -488,10 +513,11 @@ For a relatively spoiler-free explanation, watch this part of Jesse Cox's playth
                 </viewController>
                 <customObject id="VfE-9C-yxT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143" y="1121"/>
+            <point key="canvasLocation" x="-143" y="1176"/>
         </scene>
     </scenes>
     <resources>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="SmolIcon" width="80" height="80"/>
     </resources>
 </document>

@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  GeneralSettingsViewController.swift
 //  Sharkle
 //
 //  Created by Luis Finke on 12/4/24.
@@ -7,7 +7,7 @@
 //
 
 
-class SettingsViewController: NSViewController {
+class GeneralSettingsViewController: NSViewController {
     @IBOutlet weak var showInDockToggle: NSButton!
     
     deinit {
