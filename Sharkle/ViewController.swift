@@ -73,6 +73,8 @@ class ViewController: NSViewController {
     
     private func removeObservers() {
         AppSettings.imageSet.unobserve(self)
+        AppSettings.tintColorEnabled.unobserve(self)
+        AppSettings.tintColor.unobserve(self)
     }
     
     
