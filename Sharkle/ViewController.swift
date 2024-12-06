@@ -25,6 +25,7 @@ class ViewController: NSViewController {
     var imageSet: SharkleImageSet!
     
     let sharkleSounds: [URL] = (0..<8).map({ URL(fileURLWithPath: Bundle.main.path(forResource: "hey_\($0)", ofType: "m4a")!) })
+    var lastSharkleSoundIndex: Int = -1
     
     private var observing = false
     
@@ -106,6 +107,18 @@ class ViewController: NSViewController {
         }
     }
     
+    func playRandomGreetingSound() {
+        var randomSoundIndex = Int.random(in: 0..<self.players.count)
+        if randomSoundIndex == self.lastSharkleSoundIndex {
+            randomSoundIndex += 1
+            if randomSoundIndex >= self.players.count {
+                randomSoundIndex = 0
+            }
+        }
+        self.players[randomSoundIndex].play()
+        self.lastSharkleSoundIndex = randomSoundIndex
+    }
+    
     
     var animationIsPlaying = false
     override func mouseDown(with event: NSEvent) {
@@ -116,8 +129,8 @@ class ViewController: NSViewController {
         
         animationIsPlaying = true
         
-        self.players.randomElement()?.play()
-        
+        // Play random "hey" sound
+        playRandomGreetingSound()
         // Start waving animation
         playGreetingAnimations()
         
