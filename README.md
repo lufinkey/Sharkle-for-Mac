@@ -23,7 +23,7 @@ Download Sharkle over on the [Releases tab](https://github.com/SamusAranX/Sharkl
 ![The About window, feat. Dark Mode](https://user-images.githubusercontent.com/676069/44877893-ad303880-aca5-11e8-9ed4-561c85888480.png)
 
 ## Known issues
-* On dark desktop backgrounds, Sharkle might be hard to see
+* On dark desktop backgrounds, Sharkle might be hard to see with the default image set
 
 ## Feedback and support
 Just tweet at me [@SamusAranX](https://twitter.com/SamusAranX).
