@@ -10,6 +10,8 @@
 class GeneralSettingsViewController: NSViewController, NSComboBoxDelegate {
     @IBOutlet weak var showInDockToggle: NSButton!
     @IBOutlet weak var imageSetDropdown: NSPopUpButton!
+    @IBOutlet weak var tintColorToggle: NSButton!
+    @IBOutlet weak var tintColorPicker: NSColorWell!
     private var observing = false
     
     deinit {
@@ -18,10 +20,14 @@ class GeneralSettingsViewController: NSViewController, NSComboBoxDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         showInDockToggle.state = AppSettings.isShownInDock.get() ? .on : .off
         imageSetDropdown.removeAllItems()
         imageSetDropdown.addItems(withTitles: SharkleImageSet.Kind.allCases.map { $0.displayName })
         self.selectedImageSetKind = AppSettings.imageSet.get()
+        tintColorToggle.state = AppSettings.tintColorEnabled.get() ? .on : .off
+        tintColorPicker.color = AppSettings.tintColor.get()
+        
         addObservers()
     }
     
@@ -31,23 +37,35 @@ class GeneralSettingsViewController: NSViewController, NSComboBoxDelegate {
             return
         }
         AppSettings.isShownInDock.observe(self) { (shown) in
-            if shown != (self.showInDockToggle.state == .on) {
+            if (self.showInDockToggle.state == .on) != shown {
                 self.showInDockToggle.state = shown ? .on : .off
             }
         }
         AppSettings.imageSet.observe(self) { (imageSetKind) in
-            self.selectedImageSetKind = imageSetKind
+            if self.selectedImageSetKind != imageSetKind {
+                self.selectedImageSetKind = imageSetKind
+            }
         }
-        self.imageSetDropdown.addObserver(self,
-            forKeyPath: "selectedIndex",
-            options: [.new],
-            context: nil)
+        AppSettings.tintColorEnabled.observe(self) { tintColorEnabled in
+            if (self.tintColorToggle.state == .on) != tintColorEnabled {
+                self.tintColorToggle.state = tintColorEnabled ? .on : .off
+            }
+        }
+        AppSettings.tintColor.observe(self) { tintColor in
+            if self.tintColorPicker.color != tintColor {
+                self.tintColorPicker.color = tintColor
+            }
+        }
+        tintColorPicker.addObserver(self, forKeyPath: "color", options: [.new], context: nil)
         observing = true
     }
     
     private func removeObservers() {
         AppSettings.isShownInDock.unobserve(self)
-        self.imageSetDropdown.removeObserver(self, forKeyPath: "selectedIndex")
+        AppSettings.imageSet.unobserve(self)
+        AppSettings.tintColorEnabled.unobserve(self)
+        AppSettings.tintColor.unobserve(self)
+        tintColorPicker.removeObserver(self, forKeyPath: "color", context:nil)
         observing = false
     }
     
@@ -63,10 +81,17 @@ class GeneralSettingsViewController: NSViewController, NSComboBoxDelegate {
             return kinds[index]
         }
         set {
-            if let newValue = newValue, self.selectedImageSetKind != newValue,
+            if let newValue = newValue,
                let newValueIndex = SharkleImageSet.Kind.allCases.firstIndex(of: newValue) {
                 self.imageSetDropdown.selectItem(at: newValueIndex)
             }
+        }
+    }
+    
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "color", let colorPicker = object as? NSColorWell, colorPicker === self.tintColorPicker, let color = change?[.newKey] as? NSColor {
+            didChangeTintColorSelection(color)
         }
     }
     
@@ -74,6 +99,14 @@ class GeneralSettingsViewController: NSViewController, NSComboBoxDelegate {
         if let imageSetKind = self.selectedImageSetKind {
             AppSettings.imageSet.set(imageSetKind)
         }
+    }
+    
+    @IBAction func didToggleTintColorEnabled(_ sender: Any) {
+        AppSettings.tintColorEnabled.set(tintColorToggle.state == .on)
+    }
+    
+    func didChangeTintColorSelection(_ color: NSColor) {
+        AppSettings.tintColor.set(color)
     }
     
     @IBAction func didToggleShowInDock(_ sender: Any) {

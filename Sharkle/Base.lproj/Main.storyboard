@@ -284,20 +284,20 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SuS-2b-QZ2">
-                                <rect key="frame" x="165" y="81" width="277" height="18"/>
+                                <rect key="frame" x="165" y="37" width="277" height="26"/>
                                 <buttonCell key="cell" type="check" title="Show Dock Icon" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xIT-jl-ksf">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="IWe-o1-vay"/>
+                                    <constraint firstAttribute="height" constant="24" id="IWe-o1-vay"/>
                                 </constraints>
                                 <connections>
                                     <action selector="didToggleShowInDock:" target="g8b-Kv-LUV" id="8CI-tZ-h6U"/>
                                 </connections>
                             </button>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-Vu-RL2">
-                                <rect key="frame" x="18" y="130" width="143" height="16"/>
+                                <rect key="frame" x="18" y="128" width="143" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Image Set:" id="8lh-rS-GaZ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -325,13 +325,49 @@
                                     <action selector="didChangeImageSetDropdownSelection:" target="g8b-Kv-LUV" id="H7r-ob-J44"/>
                                 </connections>
                             </popUpButton>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pMd-rG-XS5">
+                                <rect key="frame" x="18" y="98" width="143" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Tint:" id="zye-58-iAE">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="HNI-V9-RpY">
+                                <rect key="frame" x="190" y="92" width="44" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="WvC-3Q-7rQ"/>
+                                    <constraint firstAttribute="width" constant="38" id="g7r-j1-Crq"/>
+                                </constraints>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </colorWell>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nys-BH-bml">
+                                <rect key="frame" x="165" y="92" width="18" height="28"/>
+                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tmJ-yK-QPH">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="l3o-fa-y2S"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="didToggleTintColorEnabled:" target="g8b-Kv-LUV" id="2We-zB-dnv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="1WK-Vu-RL2" firstAttribute="top" secondItem="f1W-Vc-nUk" secondAttribute="top" constant="20" symbolic="YES" id="Fg1-A9-Lo9"/>
+                            <constraint firstAttribute="centerX" secondItem="pMd-rG-XS5" secondAttribute="trailing" constant="72" id="7yJ-jo-pE9"/>
+                            <constraint firstItem="nys-BH-bml" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="centerX" constant="-64" id="Hk2-Ir-Q2X"/>
                             <constraint firstItem="SuS-2b-QZ2" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="centerX" constant="-64" id="Mbx-aR-RB3"/>
                             <constraint firstAttribute="trailing" secondItem="SuS-2b-QZ2" secondAttribute="trailing" constant="20" symbolic="YES" id="QG2-du-WFk"/>
-                            <constraint firstItem="SuS-2b-QZ2" firstAttribute="top" secondItem="1WK-Vu-RL2" secondAttribute="bottom" constant="32" id="Rob-4B-dKk"/>
+                            <constraint firstItem="nys-BH-bml" firstAttribute="top" secondItem="0kH-Zd-U3p" secondAttribute="bottom" constant="8" symbolic="YES" id="QIi-Bv-CMN"/>
+                            <constraint firstItem="HNI-V9-RpY" firstAttribute="leading" secondItem="nys-BH-bml" secondAttribute="trailing" constant="12" id="U6v-TJ-4gW"/>
                             <constraint firstAttribute="centerX" secondItem="1WK-Vu-RL2" secondAttribute="trailing" constant="72" id="UMg-nN-CfF"/>
+                            <constraint firstItem="1WK-Vu-RL2" firstAttribute="centerY" secondItem="0kH-Zd-U3p" secondAttribute="centerY" id="Zg6-dx-F7Q"/>
+                            <constraint firstItem="pMd-rG-XS5" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="leading" constant="20" symbolic="YES" id="aB7-9R-SLt"/>
+                            <constraint firstItem="SuS-2b-QZ2" firstAttribute="top" secondItem="HNI-V9-RpY" secondAttribute="bottom" constant="32" id="kY6-aq-SbV"/>
+                            <constraint firstItem="HNI-V9-RpY" firstAttribute="centerY" secondItem="nys-BH-bml" secondAttribute="centerY" id="ppT-fu-nl3"/>
+                            <constraint firstItem="pMd-rG-XS5" firstAttribute="centerY" secondItem="nys-BH-bml" secondAttribute="centerY" id="qJJ-vk-hBk"/>
                             <constraint firstItem="0kH-Zd-U3p" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="centerX" constant="-64" id="tfB-0s-I0x"/>
                             <constraint firstItem="0kH-Zd-U3p" firstAttribute="top" secondItem="f1W-Vc-nUk" secondAttribute="top" constant="20" symbolic="YES" id="ufi-F1-PmX"/>
                             <constraint firstItem="1WK-Vu-RL2" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="leading" constant="20" symbolic="YES" id="v40-28-OSe"/>
@@ -340,6 +376,8 @@
                     <connections>
                         <outlet property="imageSetDropdown" destination="0kH-Zd-U3p" id="o5N-BL-VGr"/>
                         <outlet property="showInDockToggle" destination="SuS-2b-QZ2" id="Loi-X3-EeR"/>
+                        <outlet property="tintColorPicker" destination="HNI-V9-RpY" id="e6c-mJ-dVW"/>
+                        <outlet property="tintColorToggle" destination="nys-BH-bml" id="t1E-Iz-ehC"/>
                     </connections>
                 </viewController>
                 <customObject id="cSF-O8-uUh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

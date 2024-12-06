@@ -49,7 +49,7 @@ class AppSettings {
             toPrefValue: ToPrefValue? = nil,
             fromPrefValue: FromPrefValue? = nil) {
             self.init(
-                prefKey: "animateWhenOccluded",
+                prefKey: prefKey,
                 getValue: { (prefItem) in
                     return prefItem.prefValue ?? defaultValue
                 },
@@ -154,6 +154,23 @@ class AppSettings {
         fromPrefValue: { (prefVal) in
             if let prefVal = prefVal as? String {
                 return SharkleImageSet.Kind(rawValue: prefVal)
+            }
+            return nil
+        }
+    )
+    
+    public static let tintColorEnabled = PreferenceItem<Bool>(
+        prefKey: "tintColorEnabled",
+        defaultValue: false
+    )
+    
+    public static let tintColor = PreferenceItem<NSColor>(
+        prefKey: "tintColor",
+        defaultValue: .white,
+        toPrefValue: { $0?.toRGBHexString() },
+        fromPrefValue: { (prefVal) in
+            if let prefVal = prefVal as? String {
+                return NSColor.fromRGBHexString(prefVal)
             }
             return nil
         }

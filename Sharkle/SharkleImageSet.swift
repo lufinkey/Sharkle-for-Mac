@@ -28,6 +28,12 @@ public class SharkleImageSet {
     let waveImages: [NSImage]
     let bubbleImages: [NSImage]
     
+    public init(idleImages: [NSImage], waveImages: [NSImage], bubbleImages: [NSImage]) {
+        self.idleImages = idleImages
+        self.waveImages = waveImages
+        self.bubbleImages = bubbleImages
+    }
+    
     public init(key: String) {
         idleImages = (0..<8).map {
             let imageName = NSImage.Name("sharkle\(key)_idle\($0)")
@@ -42,6 +48,16 @@ public class SharkleImageSet {
             return NSImage(named: imageName)!
         }
     }
+    
+    
+    public func withTintColor(_ tintColor: NSColor) -> SharkleImageSet {
+        return .init(
+            idleImages: self.idleImages.map { $0.image(withTintColor: tintColor)! },
+            waveImages: self.waveImages,
+            bubbleImages: self.bubbleImages
+        )
+    }
+    
     
     public static let `default` = SharkleImageSet(key:"")
     public static let white = SharkleImageSet(key:"_white")

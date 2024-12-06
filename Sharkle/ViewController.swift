@@ -35,7 +35,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.imageSet = SharkleImageSet.get(kind: AppSettings.imageSet.get())
+        self.updateImageSet()
         
         for soundURL in sharkleSounds {
             do {
@@ -58,12 +58,16 @@ class ViewController: NSViewController {
     
     private func addObservers() {
         AppSettings.imageSet.observe(self) { imageSetKind in
-            self.imageSet = SharkleImageSet.get(kind: AppSettings.imageSet.get())
-            if self.animationIsPlaying {
-                self.playGreetingAnimations(beginTime: self.sharkleWaveView.getAnimationBeginTime())
-            } else {
-                self.playIdleAnimations(beginTime: self.sharkleIdleView.getAnimationBeginTime())
-            }
+            self.updateImageSet()
+            self.updateCurrentAnimations()
+        }
+        AppSettings.tintColorEnabled.observe(self) { tintColorEnabled in
+            self.updateImageSet()
+            self.updateCurrentAnimations()
+        }
+        AppSettings.tintColor.observe(self) { tintColor in
+            self.updateImageSet()
+            self.updateCurrentAnimations()
         }
     }
     
@@ -71,6 +75,14 @@ class ViewController: NSViewController {
         AppSettings.imageSet.unobserve(self)
     }
     
+    
+    func updateImageSet() {
+        var imageSet = SharkleImageSet.get(kind: AppSettings.imageSet.get())
+        if AppSettings.tintColorEnabled.get() {
+            imageSet = imageSet.withTintColor(AppSettings.tintColor.get())
+        }
+        self.imageSet = imageSet
+    }
     
     func playIdleAnimations(beginTime: CFTimeInterval? = nil) {
         sharkleWaveView.stopAnimating()
@@ -82,6 +94,14 @@ class ViewController: NSViewController {
         sharkleIdleView.stopAnimating()
         sharkleWaveView.animate(withImages: self.imageSet.waveImages, andDuration: waveAnimDuration, beginTime: beginTime)
         sharkleBubbleView.animate(withImages: self.imageSet.bubbleImages, andDuration: bubbleAnimDuration, repeatTimes: 2.5, beginTime: beginTime)
+    }
+    
+    func updateCurrentAnimations() {
+        if self.animationIsPlaying {
+            self.playGreetingAnimations(beginTime: self.sharkleWaveView.getAnimationBeginTime())
+        } else {
+            self.playIdleAnimations(beginTime: self.sharkleIdleView.getAnimationBeginTime())
+        }
     }
     
     
