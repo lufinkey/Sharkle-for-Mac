@@ -53,8 +53,8 @@ public class SharkleImageSet {
     public func withTintColor(_ tintColor: NSColor) -> SharkleImageSet {
         return .init(
             idleImages: self.idleImages.map { $0.image(withTintColor: tintColor)! },
-            waveImages: self.waveImages,
-            bubbleImages: self.bubbleImages
+            waveImages: self.waveImages.map { $0.image(withTintColor: tintColor)! },
+            bubbleImages: self.bubbleImages.map { $0.image(withTintColor: tintColor)! }
         )
     }
     
