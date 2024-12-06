@@ -7,6 +7,7 @@ Hey!
 * Says "Hey" when you click on him
 * Can be dragged across the desktop
 	* Remembers where he was dropped
+* Color can be customized
 * [Also available for Windows](https://github.com/SamusAranX/Sharkle)
 * The about window is ready for macOS Mojave's Dark Mode
 
