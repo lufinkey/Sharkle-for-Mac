@@ -280,11 +280,11 @@
             <objects>
                 <viewController title="General" id="g8b-Kv-LUV" customClass="GeneralSettingsViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="f1W-Vc-nUk">
-                        <rect key="frame" x="0.0" y="0.0" width="462" height="166"/>
+                        <rect key="frame" x="0.0" y="0.0" width="462" height="148"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SuS-2b-QZ2">
-                                <rect key="frame" x="165" y="37" width="277" height="26"/>
+                                <rect key="frame" x="165" y="19" width="277" height="26"/>
                                 <buttonCell key="cell" type="check" title="Show Dock Icon" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xIT-jl-ksf">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -297,7 +297,7 @@
                                 </connections>
                             </button>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-Vu-RL2">
-                                <rect key="frame" x="18" y="128" width="143" height="16"/>
+                                <rect key="frame" x="18" y="110" width="143" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Image Set:" id="8lh-rS-GaZ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -305,7 +305,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0kH-Zd-U3p">
-                                <rect key="frame" x="164" y="122" width="275" height="25"/>
+                                <rect key="frame" x="164" y="104" width="275" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hH7-ba-dmt" id="4U6-3b-pu3">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -326,7 +326,7 @@
                                 </connections>
                             </popUpButton>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pMd-rG-XS5">
-                                <rect key="frame" x="18" y="98" width="143" height="16"/>
+                                <rect key="frame" x="18" y="80" width="143" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Tint:" id="zye-58-iAE">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -334,7 +334,7 @@
                                 </textFieldCell>
                             </textField>
                             <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="HNI-V9-RpY">
-                                <rect key="frame" x="190" y="92" width="44" height="28"/>
+                                <rect key="frame" x="190" y="74" width="44" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="WvC-3Q-7rQ"/>
                                     <constraint firstAttribute="width" constant="38" id="g7r-j1-Crq"/>
@@ -342,7 +342,7 @@
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nys-BH-bml">
-                                <rect key="frame" x="165" y="92" width="18" height="28"/>
+                                <rect key="frame" x="165" y="74" width="18" height="28"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tmJ-yK-QPH">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -357,6 +357,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="pMd-rG-XS5" secondAttribute="trailing" constant="72" id="7yJ-jo-pE9"/>
+                            <constraint firstAttribute="bottom" secondItem="SuS-2b-QZ2" secondAttribute="bottom" constant="20" symbolic="YES" id="DN4-zc-CrV"/>
                             <constraint firstItem="nys-BH-bml" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="centerX" constant="-64" id="Hk2-Ir-Q2X"/>
                             <constraint firstItem="SuS-2b-QZ2" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="centerX" constant="-64" id="Mbx-aR-RB3"/>
                             <constraint firstAttribute="trailing" secondItem="SuS-2b-QZ2" secondAttribute="trailing" constant="20" symbolic="YES" id="QG2-du-WFk"/>
