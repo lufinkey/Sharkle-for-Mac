@@ -18,28 +18,24 @@ class ViewController: NSViewController {
     // Global AVAudioPlayer variable, gets set in mouseDown event
     var players: [AVAudioPlayer] = []
     
-    let idleImages: [NSImage] = (0..<8).map {
-        let imageName = NSImage.Name("sharkle_idle\($0)")
-        return NSImage(named: imageName)!
-    }
     let idleAnimDuration = 0.666
-    
-    let waveImages: [NSImage] = (0..<4).map {
-        let imageName = NSImage.Name("sharkle_wave\($0)")
-        return NSImage(named: imageName)!
-    }
     let waveAnimDuration = 0.4
-    
-    let bubbleImages: [NSImage] = (0..<2).map {
-        let imageName = NSImage.Name("sharkle_bubble\($0)")
-        return NSImage(named: imageName)!
-    }
+    let waveRepeatCount = 2.5
     let bubbleAnimDuration = 0.8
+    var imageSet: SharkleImageSet!
     
     let sharkleSounds: [URL] = (0..<8).map({ URL(fileURLWithPath: Bundle.main.path(forResource: "hey_\($0)", ofType: "m4a")!) })
     
+    private var observing = false
+    
+    deinit {
+        removeObservers()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imageSet = SharkleImageSet.get(kind: AppSettings.imageSet.get())
         
         for soundURL in sharkleSounds {
             do {
@@ -55,8 +51,39 @@ class ViewController: NSViewController {
             }
         }
         
-        sharkleIdleView.animate(withImages: idleImages, andDuration: idleAnimDuration)
+        playIdleAnimations()
+        
+        addObservers()
     }
+    
+    private func addObservers() {
+        AppSettings.imageSet.observe(self) { imageSetKind in
+            self.imageSet = SharkleImageSet.get(kind: AppSettings.imageSet.get())
+            if self.animationIsPlaying {
+                self.playGreetingAnimations(beginTime: self.sharkleWaveView.getAnimationBeginTime())
+            } else {
+                self.playIdleAnimations(beginTime: self.sharkleIdleView.getAnimationBeginTime())
+            }
+        }
+    }
+    
+    private func removeObservers() {
+        AppSettings.imageSet.unobserve(self)
+    }
+    
+    
+    func playIdleAnimations(beginTime: CFTimeInterval? = nil) {
+        sharkleWaveView.stopAnimating()
+        sharkleBubbleView.stopAnimating()
+        sharkleIdleView.animate(withImages: self.imageSet.idleImages, andDuration: self.idleAnimDuration)
+    }
+    
+    func playGreetingAnimations(beginTime: CFTimeInterval? = nil) {
+        sharkleIdleView.stopAnimating()
+        sharkleWaveView.animate(withImages: self.imageSet.waveImages, andDuration: waveAnimDuration, beginTime: beginTime)
+        sharkleBubbleView.animate(withImages: self.imageSet.bubbleImages, andDuration: bubbleAnimDuration, repeatTimes: 2.5, beginTime: beginTime)
+    }
+    
     
     var animationIsPlaying = false
     override func mouseDown(with event: NSEvent) {
@@ -69,16 +96,12 @@ class ViewController: NSViewController {
         
         self.players.randomElement()?.play()
         
-        // Stop regular idle animation
-        sharkleIdleView.stopAnimating()
-        
         // Start waving animation
-        sharkleWaveView.animate(withImages: waveImages, andDuration: waveAnimDuration)
+        playGreetingAnimations()
         
-        // Start bubble animation, after which all animations get reset
-        sharkleBubbleView.animate(withImages: bubbleImages, andDuration: bubbleAnimDuration, repeatTimes: 2.5, afterWhich: {
-            self.sharkleWaveView.stopAnimating()
-            self.sharkleIdleView.animate(withImages: self.idleImages, andDuration: self.idleAnimDuration)
+        // Reset greeting after delay
+        Timer.schedule(delay: waveAnimDuration * waveRepeatCount, handler: { timer in
+            self.playIdleAnimations()
             self.animationIsPlaying = false
         })
     }

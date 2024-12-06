@@ -13,6 +13,8 @@ class AppSettings {
     public class PreferenceItem<T> {
         public typealias ValueGetter = (_ prefItem: PreferenceItem<T>) -> T
         public typealias ValueSetter = (_ value: T, _ prefItem: PreferenceItem<T>, _ initializing: Bool) -> Bool
+        public typealias ToPrefValue = (_ value: T?) -> Any?
+        public typealias FromPrefValue = (_ prefValue: Any?) -> T?
         public typealias ChangeCallback = (_ value: T) -> Void
         
         private struct Observer {
@@ -23,19 +25,29 @@ class AppSettings {
         public let prefKey: String
         public let getValue: ValueGetter
         public let setValue: ValueSetter
+        public let toPrefValue: ToPrefValue?
+        public let fromPrefValue: FromPrefValue?
         private var observers: [Observer] = []
         
         public init(
             prefKey: String,
             getValue: @escaping ValueGetter,
-            setValue: @escaping ValueSetter)
+            setValue: @escaping ValueSetter,
+            toPrefValue: ToPrefValue? = nil,
+            fromPrefValue: FromPrefValue? = nil)
         {
             self.prefKey = prefKey
             self.getValue = getValue
             self.setValue = setValue
+            self.toPrefValue = toPrefValue
+            self.fromPrefValue = fromPrefValue
         }
         
-        public convenience init(prefKey: String, defaultValue: T) {
+        public convenience init(
+            prefKey: String,
+            defaultValue: T,
+            toPrefValue: ToPrefValue? = nil,
+            fromPrefValue: FromPrefValue? = nil) {
             self.init(
                 prefKey: "animateWhenOccluded",
                 getValue: { (prefItem) in
@@ -43,12 +55,28 @@ class AppSettings {
                 },
                 setValue: { (value, prefItem, initializing) in
                     return true
-                })
+                },
+                toPrefValue: toPrefValue,
+                fromPrefValue: fromPrefValue)
         }
         
         public var prefValue: T? {
-            get { UserDefaults.standard.object(forKey: self.prefKey) as? T }
-            set { UserDefaults.standard.set(newValue, forKey: self.prefKey) }
+            get {
+                let val = UserDefaults.standard.object(forKey: self.prefKey)
+                if let fromPrefValue = self.fromPrefValue {
+                    return fromPrefValue(val)
+                }
+                return val as? T
+            }
+            set {
+                let val: Any?
+                if let toPrefValue = self.toPrefValue {
+                    val = toPrefValue(newValue)
+                } else {
+                    val = newValue
+                }
+                UserDefaults.standard.set(val, forKey: self.prefKey)
+            }
         }
         
         public func initialize() {
@@ -94,7 +122,7 @@ class AppSettings {
     }
     
     
-    
+    // controls whether a dock icon should show up for the app
     public static let isShownInDock = PreferenceItem<Bool>(
         prefKey: "isShownInDock",
         getValue: { prefItem in
@@ -118,9 +146,23 @@ class AppSettings {
         }
     )
     
+    // controls which set of images will be displayed
+    public static let imageSet = PreferenceItem<SharkleImageSet.Kind>(
+        prefKey: "imageSet",
+        defaultValue: .default,
+        toPrefValue: { $0?.rawValue },
+        fromPrefValue: { (prefVal) in
+            if let prefVal = prefVal as? String {
+                return SharkleImageSet.Kind(rawValue: prefVal)
+            }
+            return nil
+        }
+    )
+    
     
     
     public static func initialize() {
         self.isShownInDock.initialize()
+        self.imageSet.initialize()
     }
 }

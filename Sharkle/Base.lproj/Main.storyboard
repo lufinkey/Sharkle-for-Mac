@@ -280,11 +280,11 @@
             <objects>
                 <viewController title="General" id="g8b-Kv-LUV" customClass="GeneralSettingsViewController" customModule="Sharkle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="f1W-Vc-nUk">
-                        <rect key="frame" x="0.0" y="0.0" width="287" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="462" height="166"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SuS-2b-QZ2">
-                                <rect key="frame" x="78" y="19" width="189" height="18"/>
+                                <rect key="frame" x="165" y="81" width="277" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show Dock Icon" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xIT-jl-ksf">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -296,21 +296,55 @@
                                     <action selector="didToggleShowInDock:" target="g8b-Kv-LUV" id="8CI-tZ-h6U"/>
                                 </connections>
                             </button>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-Vu-RL2">
+                                <rect key="frame" x="18" y="130" width="143" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Image Set:" id="8lh-rS-GaZ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0kH-Zd-U3p">
+                                <rect key="frame" x="164" y="122" width="275" height="25"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hH7-ba-dmt" id="4U6-3b-pu3">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="IKQ-IW-RPE">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="hH7-ba-dmt"/>
+                                            <menuItem title="Item 2" id="gZS-le-Eji"/>
+                                            <menuItem title="Item 3" id="8D0-Oo-0Ac"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Rkg-4W-ybE"/>
+                                    <constraint firstAttribute="width" constant="268" id="exs-ND-L4I"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="didChangeImageSetDropdownSelection:" target="g8b-Kv-LUV" id="H7r-ob-J44"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="1WK-Vu-RL2" firstAttribute="top" secondItem="f1W-Vc-nUk" secondAttribute="top" constant="20" symbolic="YES" id="Fg1-A9-Lo9"/>
                             <constraint firstItem="SuS-2b-QZ2" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="centerX" constant="-64" id="Mbx-aR-RB3"/>
-                            <constraint firstAttribute="bottom" secondItem="SuS-2b-QZ2" secondAttribute="bottom" constant="20" symbolic="YES" id="PTe-cS-FtW"/>
                             <constraint firstAttribute="trailing" secondItem="SuS-2b-QZ2" secondAttribute="trailing" constant="20" symbolic="YES" id="QG2-du-WFk"/>
-                            <constraint firstItem="SuS-2b-QZ2" firstAttribute="top" secondItem="f1W-Vc-nUk" secondAttribute="top" constant="20" symbolic="YES" id="xC8-m1-ELb"/>
+                            <constraint firstItem="SuS-2b-QZ2" firstAttribute="top" secondItem="1WK-Vu-RL2" secondAttribute="bottom" constant="32" id="Rob-4B-dKk"/>
+                            <constraint firstAttribute="centerX" secondItem="1WK-Vu-RL2" secondAttribute="trailing" constant="72" id="UMg-nN-CfF"/>
+                            <constraint firstItem="0kH-Zd-U3p" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="centerX" constant="-64" id="tfB-0s-I0x"/>
+                            <constraint firstItem="0kH-Zd-U3p" firstAttribute="top" secondItem="f1W-Vc-nUk" secondAttribute="top" constant="20" symbolic="YES" id="ufi-F1-PmX"/>
+                            <constraint firstItem="1WK-Vu-RL2" firstAttribute="leading" secondItem="f1W-Vc-nUk" secondAttribute="leading" constant="20" symbolic="YES" id="v40-28-OSe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageSetDropdown" destination="0kH-Zd-U3p" id="o5N-BL-VGr"/>
                         <outlet property="showInDockToggle" destination="SuS-2b-QZ2" id="Loi-X3-EeR"/>
                     </connections>
                 </viewController>
                 <customObject id="cSF-O8-uUh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-522" y="1499"/>
+            <point key="canvasLocation" x="-522" y="1596"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="CCN-1D-17n">

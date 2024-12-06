@@ -23,6 +23,7 @@
 		56BF4A831EA9B4D100021BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56BF4A821EA9B4D100021BC2 /* Assets.xcassets */; };
 		56CD709A1EA98A12004AFA12 /* SharkleWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CD70991EA98A12004AFA12 /* SharkleWindowController.swift */; };
 		56CD709C1EA9965E004AFA12 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CD709B1EA9965E004AFA12 /* Extensions.swift */; };
+		F7CC91672D02711A00DE92E9 /* SharkleImageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC91662D02710600DE92E9 /* SharkleImageSet.swift */; };
 		F7EE7F452D00BA100025248C /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EE7F442D00BA090025248C /* GeneralSettingsViewController.swift */; };
 		F7EE7F472D00C2150025248C /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EE7F462D00C2110025248C /* AppSettings.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		56BF4A821EA9B4D100021BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56CD70991EA98A12004AFA12 /* SharkleWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharkleWindowController.swift; sourceTree = "<group>"; };
 		56CD709B1EA9965E004AFA12 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F7CC91662D02710600DE92E9 /* SharkleImageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkleImageSet.swift; sourceTree = "<group>"; };
 		F7EE7F442D00BA090025248C /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
 		F7EE7F462D00C2110025248C /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 				F7EE7F462D00C2110025248C /* AppSettings.swift */,
 				56CD709B1EA9965E004AFA12 /* Extensions.swift */,
 				568755551EA82781004C351F /* ViewController.swift */,
+				F7CC91662D02710600DE92E9 /* SharkleImageSet.swift */,
 				56CD70991EA98A12004AFA12 /* SharkleWindowController.swift */,
 				568C73831EA9E12300CBA2D3 /* AboutViewController.swift */,
 				F7EE7F442D00BA090025248C /* GeneralSettingsViewController.swift */,
@@ -220,6 +223,7 @@
 				568755561EA82781004C351F /* ViewController.swift in Sources */,
 				568755541EA82781004C351F /* AppDelegate.swift in Sources */,
 				568C73841EA9E12300CBA2D3 /* AboutViewController.swift in Sources */,
+				F7CC91672D02711A00DE92E9 /* SharkleImageSet.swift in Sources */,
 				F7EE7F472D00C2150025248C /* AppSettings.swift in Sources */,
 				56CD709C1EA9965E004AFA12 /* Extensions.swift in Sources */,
 			);
