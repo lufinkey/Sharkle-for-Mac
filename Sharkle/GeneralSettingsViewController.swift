@@ -90,7 +90,10 @@ class GeneralSettingsViewController: NSViewController, NSComboBoxDelegate {
     
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "color", let colorPicker = object as? NSColorWell, colorPicker === self.tintColorPicker, let color = change?[.newKey] as? NSColor {
+        if keyPath == "color",
+           let colorPicker = object as? NSColorWell,
+           colorPicker === self.tintColorPicker,
+           let color = change?[.newKey] as? NSColor {
             didChangeTintColorSelection(color)
         }
     }
