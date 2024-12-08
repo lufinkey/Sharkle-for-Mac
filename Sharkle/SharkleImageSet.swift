@@ -59,9 +59,9 @@ public class SharkleImageSet {
     }
     
     
-    public static let `default` = SharkleImageSet(key:"")
-    public static let white = SharkleImageSet(key:"_white")
-    public static let black = SharkleImageSet(key:"_black")
+    public static var `default`: SharkleImageSet { SharkleImageSet(key:"") }
+    public static var white: SharkleImageSet { SharkleImageSet(key:"_white") }
+    public static var black: SharkleImageSet { SharkleImageSet(key:"_black") }
     
     public static func get(kind: Kind) -> SharkleImageSet {
         switch kind {
